@@ -125,7 +125,7 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 ---
 
 ## 🧱 Project Architecture
-
+```text
 +----------------------------------------------------------------------------------+
 |                              Browser (Client)                                    |
 |                                                                                  |
