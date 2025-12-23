@@ -52,7 +52,7 @@ CipherSafe uses modern, well-vetted cryptographic primitives:
 | Session encryption | **AES-256-GCM** |
 | Key exchange | **RSA-2048 (OAEP-SHA256)** |
 | Digital signatures | **RSA-PSS (SHA-256)** |
-| Integrity checks | **BLAKE2b-256** |
+| Integrity checks | **SHA-256** |
 | Transport | **TLS 1.3** |
 | Key derivation | **HKDF-SHA256** |
 
