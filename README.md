@@ -129,17 +129,17 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 +----------------------------------------------------------------------------------+
 |                              Browser (Client)                                    |
 |                                                                                  |
-|  - Argon2id password derivation                                                   |
-|  - AES-256-GCM vault encryption                                                   |
-|  - RSA-2048 key generation                                                        |
-|  - Four-Way Handshake client logic                                                |
+|  - Argon2id password derivation                                                  |
+|  - AES-256-GCM vault encryption                                                  |
+|  - RSA-2048 key generation                                                       |
+|  - Four-Way Handshake client logic                                               |
 +-------------------------------------+--------------------------------------------+
                                       |
                                       |  TLS 1.3 (HTTPS)
                                       v
 +----------------------------------------------------------------------------------+
-|                         Flask API Server (Python)                                 |
-|                           (Apache + mod_wsgi)                                     |
+|                         Flask API Server (Python)                                |
+|                           (Apache + mod_wsgi)                                    |
 |                                                                                  |
 |  +---------------------+     +---------------------+     +--------------------+  |
 |  | Handshake Handler   | --> | Session Manager     | --> | Validation Layer   |  |
@@ -149,17 +149,17 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 |                              +---------------------+                             |
 |                                                                                  |
 |  +-------------------------------------------------------------------------+     |
-|  | Vault Handler                                                          |     |
-|  | - Stores opaque ciphertext only                                        |     |
-|  | - Never decrypts user data                                             |     |
+|  | Vault Handler                                                           |     |
+|  | - Stores opaque ciphertext only                                         |     |
+|  | - Never decrypts user data                                              |     |
 |  +-------------------------------------------------------------------------+     |
 +-------------------------------------+--------------------------------------------+
                                       |
                                       v
 +----------------------------------------------------------------------------------+
-|                         PostgreSQL Database                                       |
+|                         PostgreSQL Database                                      |
 |                                                                                  |
-|  - Encrypted vault fields only                                                    |
+|  - Encrypted vault fields only                                                   |
 |  - No plaintext credentials                                                      |
 |  - No encryption keys                                                            |
 +----------------------------------------------------------------------------------+
