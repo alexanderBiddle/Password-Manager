@@ -127,42 +127,43 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 ## 🧱 Project Architecture
 
 +----------------------------------------------------------------------------------+
-| Browser (Client) |
-| |
-| - Argon2id password derivation |
-| - AES-256-GCM vault encryption |
-| - RSA-2048 key generation |
-| - Four-Way Handshake client logic |
+|                              Browser (Client)                                    |
+|                                                                                  |
+|  - Argon2id password derivation                                                   |
+|  - AES-256-GCM vault encryption                                                   |
+|  - RSA-2048 key generation                                                        |
+|  - Four-Way Handshake client logic                                                |
 +-------------------------------------+--------------------------------------------+
-|
-| TLS 1.3 (HTTPS)
-v
+                                      |
+                                      |  TLS 1.3 (HTTPS)
+                                      v
 +----------------------------------------------------------------------------------+
-| Flask API Server (Python) |
-| (Apache + mod_wsgi) |
-| |
-| +---------------------+ +---------------------+ +--------------------+ |
-| | Handshake Handler | --> | Session Manager | --> | Validation Layer | |
-| | - Protocol steps | | - AES session keys | | - Schema checks | |
-| | - RSA verification | | - TTL enforcement | | - Base64URL rules | |
-| +---------------------+ | - Nonce replay prot | +--------------------+ |
-| +---------------------+ |
-| |
-| +-------------------------------------------------------------------------+ |
-| | Vault Handler | |
-| | - Stores opaque ciphertext only | |
-| | - Never decrypts user data | |
-| +-------------------------------------------------------------------------+ |
+|                         Flask API Server (Python)                                 |
+|                           (Apache + mod_wsgi)                                     |
+|                                                                                  |
+|  +---------------------+     +---------------------+     +--------------------+  |
+|  | Handshake Handler   | --> | Session Manager     | --> | Validation Layer   |  |
+|  | - Protocol steps    |     | - AES session keys  |     | - Schema checks    |  |
+|  | - RSA verification  |     | - TTL enforcement   |     | - Base64URL rules  |  |
+|  +---------------------+     | - Nonce replay prot |     +--------------------+  |
+|                              +---------------------+                             |
+|                                                                                  |
+|  +-------------------------------------------------------------------------+     |
+|  | Vault Handler                                                          |     |
+|  | - Stores opaque ciphertext only                                        |     |
+|  | - Never decrypts user data                                             |     |
+|  +-------------------------------------------------------------------------+     |
 +-------------------------------------+--------------------------------------------+
-|
-v
+                                      |
+                                      v
 +----------------------------------------------------------------------------------+
-| PostgreSQL Database |
-| |
-| - Encrypted vault fields only |
-| - No plaintext credentials |
-| - No encryption keys |
+|                         PostgreSQL Database                                       |
+|                                                                                  |
+|  - Encrypted vault fields only                                                    |
+|  - No plaintext credentials                                                      |
+|  - No encryption keys                                                            |
 +----------------------------------------------------------------------------------+
+
 This architecture enforces a **strict separation of responsibilities**:
 - All cryptographic operations occur on the **client**
 - The server acts as a **validated, authenticated, encrypted relay**
