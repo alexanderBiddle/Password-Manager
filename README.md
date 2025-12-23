@@ -160,8 +160,6 @@ This architecture enforces a **strict separation of responsibilities**:
 
 ---
 
----
-
 ## 🚀 Running the Project
 
 ### ✅ Prerequisites
