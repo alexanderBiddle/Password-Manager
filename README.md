@@ -60,6 +60,18 @@ All cryptographic operations follow **explicit size checks**, **format validatio
 
 ---
 
+## ⭐ What Makes CipherSafe Different
+
+- Custom Four-Way Handshake instead of cookie-based auth
+- No reliance on framework-provided authentication
+- Explicit packet schemas and strict validation
+- Cryptographic state bound to sessions
+- Server cannot decrypt or infer vault contents (zero-knowledge)
+- Designed for auditability and correctness over convenience
+
+---
+---
+
 ## 🔁 Custom Four-Way Handshake Protocol
 
 CipherSafe does **not** rely on default session cookies or opaque auth tokens.  
@@ -102,6 +114,24 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 - Replay protection (nonce tracking)
 - Explicit protocol version enforcement
 - Strong binding between identity and session
+
+---
+
+## 🧨 Threat Model & Mitigations
+
+CipherSafe was designed with an explicit threat model in mind. The following table summarizes key attack vectors and how the system mitigates them:
+
+| Threat | Mitigation |
+|------|-----------|
+| Man-in-the-Middle | TLS 1.3 + RSA-PSS signatures |
+| Credential Theft | Argon2id password hashing |
+| Database Compromise | Zero-knowledge design; ciphertext only |
+| Replay Attacks | Nonce tracking + timestamp validation |
+| Session Hijacking | Session-bound AES keys + TTL |
+| Tampered Requests | Authenticated encryption (AES-GCM) |
+| Brute-Force Login | Rate-limiting + memory-hard hashing |
+
+All mitigations are enforced **at runtime**, not assumed.
 
 ---
 
