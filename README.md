@@ -73,7 +73,7 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
      - Username
      - Client RSA public key
      - Timestamp (ISO-8601Z)
-     - BLAKE2b checksum
+     - SHA_256 checksum
 
 2. **Server Hello**
    - Returns:
@@ -163,6 +163,7 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 |  - No plaintext credentials                                                      |
 |  - No encryption keys                                                            |
 +----------------------------------------------------------------------------------+
+```
 
 This architecture enforces a **strict separation of responsibilities**:
 - All cryptographic operations occur on the **client**
