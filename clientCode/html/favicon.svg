@@ -1,0 +1,26 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Shield -->
+  <path d="M 16 2 L 28 6 L 28 14 Q 28 20 24 24 Q 20 28 16 30 Q 12 28 8 24 Q 4 20 4 14 L 4 6 Z" 
+        fill="url(#grad)"/>
+  
+  <!-- Lock shackle -->
+  <path d="M 13 12 L 13 10 Q 13 8 16 8 Q 19 8 19 10 L 19 12"
+        fill="none"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"/>
+  
+  <!-- Lock body -->
+  <rect x="11" y="12" width="10" height="8" rx="1.5" fill="white"/>
+  
+  <!-- Keyhole -->
+  <circle cx="16" cy="15" r="1.2" fill="#667eea"/>
+  <rect x="15.3" y="15" width="1.4" height="3" rx="0.5" fill="#667eea"/>
+</svg>

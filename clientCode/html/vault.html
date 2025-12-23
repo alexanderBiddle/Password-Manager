@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"
+  />
+
+  <title>CipherSafe - Vault</title>
+  
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
+  
+  <style>
+    /* Table spacing improvements */
+    .table-container {
+      margin-top: 2em;
+    }
+    #credentials-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    #credentials-table th,
+    #credentials-table td {
+      padding: 1em 1.5em;
+      text-align: left;
+    }
+    #credentials-table thead th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    #credentials-table tbody tr {
+      border-bottom: 1px solid #e0e0e0;
+    }
+    #credentials-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    #credentials-table td button {
+      margin-right: 0.5em;
+    }
+    #credentials-table td button:last-child {
+      margin-right: 0;
+    }
+  </style>
+</head>
+
+
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="logo">CipherSafe</span>
+    </div>
+
+    <div class="nav-right">
+      <button id="btn-add" type="button">Add Password</button>
+      <button id="btn-update-master-password" type="button">Update Master Password</button>
+      <button id="btn-logout" type="button">Logout</button>
+    </div>
+  </nav>
+
+  
+  <div class="container vault-container"
+     style="max-width: 1200px; width: 95%; box-sizing: border-box; overflow-x: auto;">
+
+
+
+    <h2>Your Vault</h2>
+
+    <!-- Status messages -->
+    <div id="vault-status" class="status-message" aria-live="polite"></div>
+
+    <!-- Search bar -->
+    <input type="text" id="search" placeholder="Search..." class="search-input" autocomplete="off"/>
+    
+    <!-- Vault entries container required by vault.js -->
+    <div id="vault-list" class="vault-list"></div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/argon2-browser/dist/argon2-bundled.min.js"></script>
+  <script type="module" src="https://pascal/capstone/html/src/vault.js"></script>
+  
+</body>
+</html>

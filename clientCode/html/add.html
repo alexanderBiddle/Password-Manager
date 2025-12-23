@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>CipherSafe - Add Entry</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="logo">CipherSafe</span>
+    </div>
+    
+    <div class="nav-right">
+      <button onclick="window.location.href='vault.html'" type="button">Back To Vault</button>
+      <button onclick="window.location.href='update_master_password.html'" type="button">Update Master Password</button>
+      <button id="btn-logout" type="button">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container add-container">
+    <h2>Add New Password</h2>
+
+    <div id="add-status" class="status-message" aria-live="polite"></div>
+
+    <form id="add-form" method="post" autocomplete="off" novalidate>
+
+      <!-- WEBSITE -->
+      <div class="input-group">
+        <label for="site">Website</label>
+        <input
+          type="text"
+          id="site"
+          name="website-entry"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- USERNAME -->
+      <div class="input-group">
+        <label for="username-entry">Username</label>
+        <input
+          type="text"
+          id="username-entry"
+          name="username-entry"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- EMAIL -->
+      <div class="input-group">
+        <label for="email-entry">E-mail</label>
+        <input
+          type="text"
+          id="email-entry"
+          name="email-entry"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="input-group">
+        <label for="password-entry">Password</label>
+
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password-entry"
+            name="password-entry"
+            required
+            autocomplete="new-password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            aria-label="Show password"
+            aria-pressed="false"
+            data-toggle-password="#password-entry">
+            👁
+          </button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <button type="button" id="generate-password" class="btn small-btn">
+          Generate Strong Password
+        </button>
+      </div>
+
+      <button type="submit" class="btn">Save</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/argon2-browser/dist/argon2-bundled.min.js"></script>
+  <script type="module" src="https://pascal/capstone/html/src/add.js"></script>
+
+</body>
+</html>

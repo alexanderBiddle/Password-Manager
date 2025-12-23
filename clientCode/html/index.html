@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>CipherSafe - Login</title>
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+
+<body>
+  <div class="container login-container">
+    <div class="login-box">
+      <h1>CipherSafe</h1>
+
+      <form id="login-form" method="post" autocomplete="off" novalidate>
+        
+        <div class="input-group">
+          <label for="login-username-input">Username or Email</label>
+          <input 
+            type="text" 
+            id="login-username-input"
+            name="username"
+            required 
+            autocomplete="username"
+            inputmode="email"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="login-password-input">Master Password</label>
+
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="login-password-input"
+              name="master-password"
+              required
+              autocomplete="current-password"
+            />
+            <button
+              type="button"
+              class="password-toggle"
+              aria-label="Show password"
+              aria-pressed="false"
+              data-toggle-password="#login-password-input">
+              👁
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <div id="login-status" class="status-message" aria-live="polite"></div>
+      </form>
+
+      <p class="small-text">
+        Not registered?
+        <a href="register.html">Create an account</a>
+      </p>
+    </div>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/argon2-browser/dist/argon2-bundled.min.js"></script>
+  <script type="module" src="https://pascal/capstone/html/src/ui.js"></script>
+  <script type="module" src="https://pascal/capstone/html/src/login.js"></script>
+  
+</body>
+</html>

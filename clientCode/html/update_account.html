@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>CipherSafe - Update Account</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="logo">CipherSafe</span>
+    </div>
+
+    <div class="nav-right">
+      <button onclick="window.location.href='vault.html'" type="button">Back To Vault</button>
+      <button onclick="window.location.href='update_master_password.html'" type="button">Update Master Password</button>
+      <button id="btn-logout" type="button">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container update-container">
+    <h2>Update Vault Entry</h2>
+
+    <div id="update-status" class="status-message" aria-live="polite"></div>
+
+    <form id="update-account-form" autocomplete="off" novalidate>
+
+      <div id="current-fields">
+        <div class="input-group">
+          <label for="old-website">Current Website</label>
+          <input type="text" id="old-website" autocomplete="off" />
+        </div>
+
+        <div class="input-group">
+          <label for="old-username">Current Username</label>
+          <input type="text" id="old-username" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="new-website">New Website</label>
+        <input type="text" id="new-website" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label for="new-username">New Username</label>
+        <input type="text" id="new-username" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label for="new-email">New Email</label>
+        <input type="text" id="new-email" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label for="new-password">New Password</label>
+
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="new-password"
+            required
+            autocomplete="new-password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            aria-label="Show password"
+            aria-pressed="false"
+            data-toggle-password="#new-password">
+            👁
+          </button>
+        </div>
+      </div>
+
+      <!-- Generate Password button (fix) -->
+      <button type="button" id="generate-password" class="btn">Generate Password</button>
+
+      <button type="submit" class="btn">Save Changes</button>
+
+    </form>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/argon2-browser/dist/argon2-bundled.min.js"></script>
+  <script type="module" src="https://pascal/capstone/html/src/update_account.js"></script>
+</body>
+</html>
