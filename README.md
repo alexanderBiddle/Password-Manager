@@ -126,3 +126,56 @@ Instead, it implements a **custom cryptographic handshake** designed for learnin
 
 ## 🧱 Project Architecture
 
+┌────────────┐
+│ Browser │
+│ (Client) │
+└─────┬──────┘
+│ TLS 1.3
+▼
+┌─────────────────────────┐
+│ Flask API Server │
+│ (Python, mod_wsgi) │
+│ │
+│ ┌───────────────────┐ │
+│ │ Handshake Handler │ │
+│ ├───────────────────┤ │
+│ │ Session Manager │ │
+│ ├───────────────────┤ │
+│ │ Vault Handler │ │
+│ ├───────────────────┤ │
+│ │ Validation Layer │ │
+│ └───────────────────┘ │
+└─────────┬─────────────┘
+│
+▼
+┌──────────────────────┐
+│ PostgreSQL Database │
+│ (Encrypted Fields) │
+└──────────────────────┘
+
+This architecture enforces a **strict separation of responsibilities**:
+- All cryptographic operations occur on the **client**
+- The server acts as a **validated, authenticated, encrypted relay**
+- The database stores **only opaque ciphertext**
+
+---
+
+---
+
+## 🚀 Running the Project
+
+### ✅ Prerequisites
+
+- Python **3.10+**
+- PostgreSQL **14+**
+- Apache with **mod_wsgi**
+- OpenSSL
+- Modern browser (Chrome / Firefox / Edge)
+
+---
+
+### 📥 Clone the Repository
+
+```bash
+git clone https://github.com/your-username/cipherSafe.git
+cd cipherSafe
